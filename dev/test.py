@@ -64,7 +64,7 @@ def validate(q_network, epoch, test_loader, args, reinforcement_learner,
         if text_dataset:
             if args.cuda:
                 q_values, hidden = q_network(Variable(episode_samples).type(torch.LongTensor).cuda(), hidden,
-                                             class_vector=state, seq=episode_samples.size()[1])
+                                             class_vector=state.cuda(), seq=episode_samples.size()[1])
             else:
                 q_values, hidden = q_network(Variable(episode_samples).type(torch.LongTensor), hidden,
                                              class_vector=state, seq=episode_samples.size()[1])
